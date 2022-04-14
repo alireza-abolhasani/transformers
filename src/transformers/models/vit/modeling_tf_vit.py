@@ -717,7 +717,7 @@ class TFViTPooler(tf.keras.layers.Layer):
         # to the first token.
         first_token_tensor = hidden_states[:, 0]
         pooled_output = self.dense(inputs=first_token_tensor)
-
+        print("TFViTPooler->Call()")
         return pooled_output
 
 
@@ -802,7 +802,7 @@ class TFViTForImageClassification(TFViTPreTrainedModel, TFSequenceClassification
         if not return_dict:
             output = (logits,) + outputs[2:]
             return ((loss,) + output) if loss is not None else output
-
+        print("TFViTForImageClassification->call()")
         return TFSequenceClassifierOutput(
             loss=loss,
             logits=logits,
@@ -813,5 +813,5 @@ class TFViTForImageClassification(TFViTPreTrainedModel, TFSequenceClassification
     def serving_output(self, output: TFSequenceClassifierOutput) -> TFSequenceClassifierOutput:
         hs = tf.convert_to_tensor(output.hidden_states) if self.config.output_hidden_states else None
         attns = tf.convert_to_tensor(output.attentions) if self.config.output_attentions else None
-
+        print("serving_output")
         return TFSequenceClassifierOutput(logits=output.logits, hidden_states=hs, attentions=attns)
