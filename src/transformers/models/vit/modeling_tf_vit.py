@@ -783,7 +783,7 @@ class TFViTForImageClassification(TFViTPreTrainedModel, TFSequenceClassification
         >>> logits = outputs.logits
         >>> # model predicts one of the 1000 ImageNet classes
         >>> predicted_class_idx = tf.math.argmax(logits, axis=-1)[0]
-        >>> print("Predicted class:", model.config.id2label[int(predicted_class_idx)])
+        >>> print("Our Predicted class:", model.config.id2label[int(predicted_class_idx)])
         ```"""
 
         outputs = self.vit(
