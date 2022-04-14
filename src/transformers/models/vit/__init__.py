@@ -24,6 +24,8 @@ _import_structure = {
     "configuration_vit": ["VIT_PRETRAINED_CONFIG_ARCHIVE_MAP", "ViTConfig", "ViTOnnxConfig"],
 }
 
+print("*************** __init__.py *****************")
+
 if is_vision_available():
     _import_structure["feature_extraction_vit"] = ["ViTFeatureExtractor"]
 
